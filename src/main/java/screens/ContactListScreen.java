@@ -10,11 +10,10 @@ public class ContactListScreen extends BaseScreen {
         super(driver);
     }
 
-    @FindBy(xpath = "//*[@id = 'com.sheygam.contactapp:id/action_bar']/android.widget.TextView")
+
+    @FindBy(xpath = "//*[@resource-id='com.sheygam.contactapp:id/action_bar']/android.widget.TextView")
     AndroidElement activityTextView;
 
-    @FindBy(id = "com.sheygam.contactapp:id/add_contact_btn")
-    AndroidElement addContactBtn;
 
     public boolean isActivityTitleDisplayed(String text) {
         //return activityTextView.getText().contains("Contact list");
