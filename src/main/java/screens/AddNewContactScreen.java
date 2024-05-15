@@ -32,13 +32,19 @@ public class AddNewContactScreen extends BaseScreen {
         type(emailEditText, contact.getEmail());
         type(phoneEditText, contact.getPhone());
         type(addressEditText, contact.getAddress());
-        type(descriptionEditText, contact.getDescription());
+        if(contact.getDescription() !=null){
+        type(descriptionEditText, contact.getDescription());}
         return this;
     }
 
     public ContactListScreen submitContactForm() {
         createBtn.click();
         return new ContactListScreen(driver);
+    }
+
+    public AddNewContactScreen submitContactFormNegative() {
+        createBtn.click();
+        return this;
     }
 
     public ContactListScreen createContact(Contact contact){
@@ -50,6 +56,15 @@ public class AddNewContactScreen extends BaseScreen {
         type(addressEditText, contact.getAddress());
         type(descriptionEditText, contact.getDescription());
         createBtn.click();
+        return new ContactListScreen(driver);
+    }
+
+    public AddNewContactScreen isErrorContainsText(String text) {
+        checkAlertText(text);
+        return this;
+    }
+
+    public ContactListScreen returnToContactListScreen() {
         return new ContactListScreen(driver);
     }
 }
